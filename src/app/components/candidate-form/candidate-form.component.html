@@ -1,0 +1,18 @@
+<div class="container">
+    <form [formGroup]="handleFormService.candidateForm">
+        Value: {{ handleFormService.candidateForm.value | json }}
+        <hr>
+
+        <div class="items-container">
+            <mat-form-field>
+                <input matInput placeholder="name" formControlName="name">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="lastname" formControlName="lastName">
+            </mat-form-field>
+        </div>
+       
+
+    </form>
+
+</div>
