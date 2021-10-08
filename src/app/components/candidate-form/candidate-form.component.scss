@@ -3,8 +3,29 @@
     flex-direction: column;
     width: 100%;
 }
+.form-container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.item-container {
+    width: 100%;
+    display: flex;
+}
 
 .items-container {
+    width: 100%;
     display: flex;
     justify-content: space-between;
+}
+
+.mat-form-field {
+    width: 300px;
+}
+
+.country-option {
+    height: 35px ;
+    max-height: 35px;
+    font-size: 14px !important;
 }

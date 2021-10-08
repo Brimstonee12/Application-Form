@@ -11,6 +11,8 @@ import { MatInputModule } from '@angular/material/input'
 import { MatSelectModule } from '@angular/material/select'
 import { MatButtonModule } from '@angular/material/button'
 import { MatChipsModule } from '@angular/material/chips'
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +27,8 @@ import { MatChipsModule } from '@angular/material/chips'
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
-    MatChipsModule
+    MatChipsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
