@@ -1,0 +1,40 @@
+<div class="container">
+    <form class="form-container" [formGroup]="handleFormService.candidateForm">
+        Value: {{ handleFormService.candidateForm.value | json }}
+        <hr>
+
+        <div class="items-container">
+            <mat-form-field>
+                <input matInput placeholder="Name" formControlName="name">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Lastname" formControlName="lastName">
+            </mat-form-field>
+        </div>
+        <div class="item-container">
+            <mat-form-field>
+                <input matInput placeholder="Email" formControlName="email">
+            </mat-form-field>
+        </div>
+
+
+        <div class="items-container">
+            <mat-form-field appearance="fill">
+                <mat-label>Country</mat-label>
+                <mat-select formControlName="country">
+                    <div *ngFor="handleFormService.countriesList">
+                        <mat-option class="country-option" value="one">{{i.name}}</mat-option>
+                    </div>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="City" formControlName="city">
+            </mat-form-field>
+        </div>
+
+
+    </form>
+    <div>
+        
+    </div>
+</div>
