@@ -12,12 +12,14 @@ import { MatSelectModule } from '@angular/material/select'
 import { MatButtonModule } from '@angular/material/button'
 import { MatChipsModule } from '@angular/material/chips'
 import { HttpClientModule } from '@angular/common/http';
+import { CandidateSubmitComponent } from './components/candidate-submit/candidate-submit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CandidateFormComponent,
-    CandidateQuestionsComponent
+    CandidateQuestionsComponent,
+    CandidateSubmitComponent
   ],
   imports: [
     BrowserModule,

@@ -13,7 +13,7 @@ export class CandidateFormComponent implements OnInit {
   //glowne dane formy beda w serwisie i beda updateowane lokalnie w komponentach
   //czyli gettery i funkcje do dodawania beda w likalnych komponentach
   ngOnInit(): void {
-    if (this.handleFormService.formStep === "") {
+    if (this.handleFormService.formStep === 0) {
       this.handleFormService.activateFormHandling();
     }
   }

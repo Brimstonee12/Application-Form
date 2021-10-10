@@ -12,8 +12,10 @@ export class HandleFormService {
   candidateForm: FormGroup;
   private countriesApiUrl: string = 'https://api.smartrecruiters.com/v1/companies/smartrecruiters/postings';
   public countryList$: Observable<any>;
-  formStep: string = ""
+  public formStep: number = 0
+  public isPrevButtonDisabled: boolean = true
   public countriesList: any;
+
 
   constructor(public fb: FormBuilder,
     private http: HttpClient
@@ -21,9 +23,7 @@ export class HandleFormService {
 
 
   activateFormHandling() {
-    this.formStep = '1'
-    // this.countryList$ = this.http.get<any>(this.countriesApiUrl)
-    // this.countryList$.subscribe(res => this.countriesList = res)
+    this.formStep = 1
 
     this.countryList$ = this.http.get<any>(this.countriesApiUrl);
     this.countryList$.subscribe((res) => (this.countriesList = res));
