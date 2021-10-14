@@ -11,9 +11,12 @@
                 <input matInput placeholder="Lastname" formControlName="lastName">
             </mat-form-field>
         </div>
-        <div class="item-container">
+        <div class="items-container">
             <mat-form-field>
                 <input matInput placeholder="Email" formControlName="email">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Phone Number" formControlName="phone">
             </mat-form-field>
         </div>
 
@@ -31,10 +34,21 @@
                 <input matInput placeholder="City" formControlName="city">
             </mat-form-field>
         </div>
+        <div class="item-container">
+            <div formArrayName="links">
+                <div *ngFor="let linkField of formLinks.controls; let i=index" [formGroupName]="i">
+                    <mat-form-field class="link-form">
+                        <input matInput  placeholder="Link" formControlName="link">
+                    </mat-form-field>
+                    <button class="form-button" mat-raised-button color="warn" (click)="deleteLinkField(i)">Delete</button>
+                </div>
+            </div>
+            <button [disabled]="formLinks.length > 4" class="form-button" mat-raised-button color="primary" (click)="addLinkField()">Add Link</button>
+        </div>
 
 
     </form>
     <div>
-        
+
     </div>
 </div>

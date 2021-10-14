@@ -1,7 +1,11 @@
 <div class="container">
   <div class="content">
-    <h1 class="title">Candidate Recruitment Form</h1>
-    <mat-progress-bar mode="determinate" [value]="handleProgressBar()"></mat-progress-bar>
+    <div class="title-container">
+      <h1 class="title">Candidate Recruitment Form</h1>
+    </div>
+    <div class="progress-bar-container">
+      <mat-progress-bar mode="determinate" [value]="handleProgressBar()"></mat-progress-bar>
+    </div>
     <div class="steps-container">
       <app-candidate-form *ngIf="handleFormService.formStep === 0 || handleFormService.formStep === 1">
       </app-candidate-form>

@@ -29,12 +29,13 @@ export class HandleFormService {
     this.countryList$.subscribe((res) => (this.countriesList = res));
 
     this.candidateForm = this.fb.group({
-      name: [],
-      lastName: [],
+      name: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      phones: this.fb.array([]),
-      country: [],
+      phone: ['', [Validators.required]],
+      country: ['', [Validators.required]],
       city: [],
+      links: this.fb.array([]),
     });
   }
 

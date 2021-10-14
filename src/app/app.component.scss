@@ -13,9 +13,19 @@
     flex-direction: column;
 }
 
+.title-container {
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .title {
     color: black;
     font-size: 45px;
+}
+
+.progress-bar-container {
+    height: 10%;
 }
 
 .steps-container {
@@ -24,8 +34,8 @@
 }
 
 .button-container {
-    height: auto;
-    padding: 15px;
+    height: 10%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }

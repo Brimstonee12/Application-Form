@@ -8,10 +8,25 @@ import { HandleFormService } from '../../services/handle-form.service';
   styleUrls: ['./candidate-form.component.scss'],
 })
 export class CandidateFormComponent implements OnInit {
-  constructor(public handleFormService: HandleFormService) {}
+  constructor(public handleFormService: HandleFormService,
+    public fb: FormBuilder) {}
 
-  //glowne dane formy beda w serwisie i beda updateowane lokalnie w komponentach
-  //czyli gettery i funkcje do dodawania beda w likalnych komponentach
+  get formLinks() {
+    return this.handleFormService.candidateForm.get('links') as FormArray;
+  }
+
+  addLinkField() {
+    const dynamicLink = this.fb.group({
+      link: []
+    });
+
+    this.formLinks.push(dynamicLink);
+  }
+
+  deleteLinkField(linkField) {
+    this.formLinks.removeAt(linkField);
+  }
+
   ngOnInit(): void {
     if (this.handleFormService.formStep === 0) {
       this.handleFormService.activateFormHandling();
