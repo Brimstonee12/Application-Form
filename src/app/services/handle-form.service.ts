@@ -9,13 +9,20 @@ import { Country } from "../types/country";
 })
 export class HandleFormService {
 
-  candidateForm: FormGroup;
+  public candidateForm: FormGroup;
   private countriesApiUrl: string = 'https://api.smartrecruiters.com/v1/companies/smartrecruiters/postings';
   public countryList$: Observable<any>;
   public formStep: number = 0
   public isPrevButtonDisabled: boolean = true
   public countriesList: any;
+  public isFormValid: boolean = true
 
+  public fakeCountry = [
+    {id:1, name:'Arabia'},
+    {id:2, name:'Poland'},
+    {id:3, name:'USA'},
+    {id:4, name:'United Kingdom'},
+  ]
 
   constructor(public fb: FormBuilder,
     private http: HttpClient
@@ -29,12 +36,13 @@ export class HandleFormService {
     this.countryList$.subscribe((res) => (this.countriesList = res));
 
     this.candidateForm = this.fb.group({
-      name: [],
-      lastName: [],
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      lastName: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
-      phones: this.fb.array([]),
-      country: [],
-      city: [],
+      phone: ['', [Validators.required]],
+      country: ['', [Validators.required]],
+      city: ['', [Validators.required]],
+      links: this.fb.array([]),
     });
   }
 

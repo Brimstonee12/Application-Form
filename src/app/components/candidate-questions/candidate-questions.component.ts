@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./candidate-questions.component.scss']
 })
 export class CandidateQuestionsComponent implements OnInit {
-
+  theName: string
   constructor() { }
 
   ngOnInit(): void {
