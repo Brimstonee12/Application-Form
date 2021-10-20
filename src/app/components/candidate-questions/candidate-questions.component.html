@@ -1,1 +1,13 @@
-<p>candidate-questions works!</p>
+<div>
+    <!-- <input type="text" [(ngModel)]="theName" id="dupa" name="dupa" required minlength="4" appForbiddenName="bob" />
+    <p *ngIf="dupa.errors?.required">The Forbidden Word</p>
+    <p>{{theName}}</p> -->
+
+    <label for="firstName">First Name</label>
+    <input type="text" name="firstName" [(ngModel)]="theName" #firstName="ngModel"
+        required />
+    <div *ngIf="firstName.invalid" >
+        <div *ngIf="firstName.errors.required">First Name is required</div>
+    </div>
+    <p>{{theName}}</p>
+</div>

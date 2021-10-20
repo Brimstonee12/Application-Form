@@ -3,9 +3,10 @@
     height: 100%;
     overflow: auto;
     display: flex;
-    justify-content: center;
-
+    flex-direction: column;
+    align-items: center;
 }
+
 .form-container {
     display: flex;
     flex-direction: column;
@@ -22,6 +23,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 10px;
 }
 
 .mat-form-field {
@@ -36,8 +38,29 @@
 
 .form-button {
     width: 90px;
+    margin: 15px 0;
 }
 
 .link-form {
     margin-right: 15px !important;
+}
+
+.mat-error {
+    font-size: 13px !important;
+}
+
+.country-form .mat-form-field-appearance-fill .mat-form-field-flex{
+    padding: 0px !important;
+}
+
+.attach-container {
+    width: 80%;
+    height: 120px;
+    background-color: lightgray;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
 }

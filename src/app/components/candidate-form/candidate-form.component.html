@@ -6,49 +6,75 @@
         <div class="items-container">
             <mat-form-field>
                 <input matInput placeholder="Name" formControlName="name">
+                <mat-error *ngIf="formName.invalid && formName.touched" class="input-error">
+                    Please type correct Name
+                </mat-error>
             </mat-form-field>
             <mat-form-field>
                 <input matInput placeholder="Lastname" formControlName="lastName">
+                <mat-error *ngIf="formLastName.invalid && formLastName.touched">
+                    Please type correct Last Name
+                </mat-error>
             </mat-form-field>
         </div>
+
         <div class="items-container">
             <mat-form-field>
                 <input matInput placeholder="Email" formControlName="email">
+                <mat-error *ngIf="formEmail.invalid && formEmail.touched">
+                    Please type correct Email
+                </mat-error>
             </mat-form-field>
             <mat-form-field>
                 <input matInput placeholder="Phone Number" formControlName="phone">
+                <mat-error *ngIf="formPhone.invalid && formPhone.touched">
+                    Please type correct Phone Number
+                </mat-error>
             </mat-form-field>
         </div>
 
-
         <div class="items-container">
-            <mat-form-field appearance="fill">
+            <mat-form-field class="country-form" appearance="fill">
                 <mat-label>Country</mat-label>
                 <mat-select formControlName="country">
                     <div *ngFor="handleFormService.countriesList">
                         <mat-option class="country-option" value="one">{{i.name}}</mat-option>
                     </div>
                 </mat-select>
+                <mat-error *ngIf="formCountry.invalid && formCountry.touched">
+                    Country is required
+                </mat-error>
             </mat-form-field>
             <mat-form-field>
                 <input matInput placeholder="City" formControlName="city">
+                <mat-error *ngIf="formCity.invalid && formCity.touched">
+                    Please type correct City
+                </mat-error>
             </mat-form-field>
         </div>
+
         <div class="item-container">
             <div formArrayName="links">
                 <div *ngFor="let linkField of formLinks.controls; let i=index" [formGroupName]="i">
                     <mat-form-field class="link-form">
-                        <input matInput  placeholder="Link" formControlName="link">
+                        <input matInput placeholder="Link" formControlName="link">
+                        <mat-error *ngIf="formLinks.touched">
+                            Field cannot be empty
+                        </mat-error>
                     </mat-form-field>
-                    <button class="form-button" mat-raised-button color="warn" (click)="deleteLinkField(i)">Delete</button>
+                    <button class="form-button" mat-raised-button color="warn"
+                        (click)="deleteLinkField(i)">Delete</button>
                 </div>
             </div>
-            <button [disabled]="formLinks.length > 4" class="form-button" mat-raised-button color="primary" (click)="addLinkField()">Add Link</button>
         </div>
 
+        <button [disabled]="formLinks.length > 3" class="form-button" mat-raised-button color="primary"
+            (click)="addLinkField()">Add Link</button>
 
     </form>
-    <div>
 
+    <div class="attach-container">
+        <h2>Attach your resume</h2>
+        <p>You can also attach your cover letter. Only pdf files are accepted.</p>
     </div>
 </div>

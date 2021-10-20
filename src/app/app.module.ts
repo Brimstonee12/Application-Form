@@ -13,7 +13,7 @@ import { MatButtonModule } from '@angular/material/button'
 import { MatChipsModule } from '@angular/material/chips'
 import { HttpClientModule } from '@angular/common/http';
 import { CandidateSubmitComponent } from './components/candidate-submit/candidate-submit.component';
-
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +29,7 @@ import { CandidateSubmitComponent } from './components/candidate-submit/candidat
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
+    FormsModule,
     MatChipsModule,
     HttpClientModule
   ],

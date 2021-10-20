@@ -15,6 +15,30 @@ export class CandidateFormComponent implements OnInit {
     return this.handleFormService.candidateForm.get('links') as FormArray;
   }
 
+  get formName() {
+    return this.handleFormService.candidateForm.get('name');
+  }
+
+  get formLastName() {
+    return this.handleFormService.candidateForm.get('lastName');
+  }
+
+  get formEmail() {
+    return this.handleFormService.candidateForm.get('email');
+  }
+
+  get formPhone() {
+    return this.handleFormService.candidateForm.get('phone');
+  }
+
+  get formCountry() {
+    return this.handleFormService.candidateForm.get('country');
+  }
+
+  get formCity() {
+    return this.handleFormService.candidateForm.get('city');
+  }
+
   addLinkField() {
     const dynamicLink = this.fb.group({
       link: []
