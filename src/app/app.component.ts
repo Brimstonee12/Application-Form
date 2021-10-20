@@ -6,6 +6,8 @@ import { HandleFormService } from './services/handle-form.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  validationErrorMsg: string = "Please correct all fields before continue"
+
   constructor(public handleFormService: HandleFormService) {}
 
   handleProgressBar() {
@@ -25,11 +27,14 @@ export class AppComponent {
       if (this.handleFormService.formStep <= 1) {
         this.handleFormService.isPrevButtonDisabled = true;
       }
-    } else if (step === 'next') {
+    } else if (step === 'next' && this.handleFormService.candidateForm.valid) {
       this.handleFormService.formStep++;
+      this.handleFormService.isFormValid = true
       if (this.handleFormService.formStep > 1) {
         this.handleFormService.isPrevButtonDisabled = false;
       }
+    } else if(step === 'next' && !this.handleFormService.candidateForm.valid){
+      this.handleFormService.isFormValid = false
     }
   }
 }

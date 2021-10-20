@@ -9,13 +9,20 @@ import { Country } from "../types/country";
 })
 export class HandleFormService {
 
-  candidateForm: FormGroup;
+  public candidateForm: FormGroup;
   private countriesApiUrl: string = 'https://api.smartrecruiters.com/v1/companies/smartrecruiters/postings';
   public countryList$: Observable<any>;
   public formStep: number = 0
   public isPrevButtonDisabled: boolean = true
   public countriesList: any;
+  public isFormValid: boolean = true
 
+  public fakeCountry = [
+    {id:1, name:'Arabia'},
+    {id:2, name:'Poland'},
+    {id:3, name:'USA'},
+    {id:4, name:'United Kingdom'},
+  ]
 
   constructor(public fb: FormBuilder,
     private http: HttpClient

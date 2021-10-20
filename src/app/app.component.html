@@ -19,5 +19,10 @@
         mat-raised-button>Next Step</button>
       <button *ngIf="handleFormService.formStep === 3" color="warn" mat-raised-button>Send Application</button>
     </div>
+    <div class="error-container">
+      <mat-error *ngIf="!handleFormService.isFormValid">
+        {{validationErrorMsg}}
+    </mat-error>
+    </div>
   </div>
 </div>

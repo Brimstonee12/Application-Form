@@ -37,7 +37,7 @@
             <mat-form-field class="country-form" appearance="fill">
                 <mat-label>Country</mat-label>
                 <mat-select formControlName="country">
-                    <div *ngFor="handleFormService.countriesList">
+                    <div *ngFor="let i of handleFormService.fakeCountry">
                         <mat-option class="country-option" value="one">{{i.name}}</mat-option>
                     </div>
                 </mat-select>

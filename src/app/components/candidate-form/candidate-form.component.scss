@@ -49,8 +49,8 @@
     font-size: 13px !important;
 }
 
-.country-form .mat-form-field-appearance-fill .mat-form-field-flex{
-    padding: 0px !important;
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+    padding: .75em 0 0 0 !important;
 }
 
 .attach-container {
