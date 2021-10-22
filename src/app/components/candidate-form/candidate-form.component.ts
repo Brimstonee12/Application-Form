@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HandleFormService } from '../../services/handle-form.service';
-
+import { Observable, Observer } from 'rxjs';
+import { UploadedFile, UploadError} from "../../types/files"
 @Component({
   selector: 'app-candidate-form',
   templateUrl: './candidate-form.component.html',
   styleUrls: ['./candidate-form.component.scss'],
 })
 export class CandidateFormComponent implements OnInit {
+
   constructor(public handleFormService: HandleFormService,
     public fb: FormBuilder) {}
 
@@ -50,12 +52,36 @@ export class CandidateFormComponent implements OnInit {
   deleteLinkField(linkField) {
     this.formLinks.removeAt(linkField);
   }
-  //test file upload
-  fileToUpload: File | null = null;
-  fileBrowseHandler(file:any){
-    this.fileToUpload = file.item(0);
-    console.log('this.fileUpload :>> ', this.fileToUpload);
-    console.log('file :>> ', file);
+
+  private isPdf(fileType: string): boolean {
+    return fileType.match(/pdf\/*/) !== null;
+  }
+ // przeniesc walidacje do osobnego komponentu
+  private validateFile(file: File): Observable<UploadedFile> {
+      console.log('file :>> ', file);
+      const fileReader = new FileReader();
+      return new Observable((observer: Observer<UploadedFile>) => {
+        fileReader.readAsDataURL(file);
+        fileReader.onload = event => {
+          const { type, name } = file 
+          if(this.isPdf(type)){
+            observer.next({file})
+            observer.complete();
+          }
+          else {
+            console.log('wrong Type :>> ');
+            observer.error({error:{ name, errorMessage: 'INVALID_SIZE'}})
+          }
+        }
+        fileReader.onerror = () => {
+          const { name } = file 
+          observer.error({error:{ name, errorMessage: 'INVALID_FILE'}})
+        };
+      })
+  }
+  
+  fileBrowseHandler(fileData): void{
+   this.validateFile(fileData.target.files[0]).subscribe(i => console.log('i :>> ', i))
   }
   ngOnInit(): void {
     if (this.handleFormService.formStep === 0) {

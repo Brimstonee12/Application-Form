@@ -72,8 +72,13 @@
     </form>
 
     <div class="attach-container">
-        <input type=file multiple (change)="fileBrowseHandler($event.target.files)" />
+        <input type=file (change)="fileBrowseHandler($event)" />
         <h2>Attach your resume</h2>
         <p>You can also attach your cover letter. Only pdf files are accepted.</p>
+    </div>
+    <div *ngFor="" class="attachments-container">
+        <div>
+            <p></p>
+        </div>
     </div>
 </div>
