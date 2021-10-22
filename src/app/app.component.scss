@@ -1,6 +1,5 @@
 .container {
     height: 100%;
-    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -9,8 +8,6 @@
 .content {
     width: 70%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
 }
 
 .title-container {
@@ -30,18 +27,17 @@
 
 .steps-container {
     height: 50%;
-    width: 100%;
 }
 
 .button-container {
     height: 5%;
+    margin-top: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .error-container {
-    width: 100%;
     display: flex;
     justify-content: end;
 }

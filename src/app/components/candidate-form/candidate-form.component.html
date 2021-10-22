@@ -38,7 +38,7 @@
                 <mat-label>Country</mat-label>
                 <mat-select formControlName="country">
                     <div *ngFor="let i of handleFormService.fakeCountry">
-                        <mat-option class="country-option" value="one">{{i.name}}</mat-option>
+                        <mat-option class="country-option" [value]="i.name">{{i.name}}</mat-option>
                     </div>
                 </mat-select>
                 <mat-error *ngIf="formCountry.invalid && formCountry.touched">
@@ -53,7 +53,6 @@
             </mat-form-field>
         </div>
 
-        <div class="item-container">
             <div formArrayName="links">
                 <div *ngFor="let linkField of formLinks.controls; let i=index" [formGroupName]="i">
                     <mat-form-field class="link-form">
@@ -66,7 +65,6 @@
                         (click)="deleteLinkField(i)">Delete</button>
                 </div>
             </div>
-        </div>
 
         <button [disabled]="formLinks.length > 3" class="form-button" mat-raised-button color="primary"
             (click)="addLinkField()">Add Link</button>
@@ -74,6 +72,7 @@
     </form>
 
     <div class="attach-container">
+        <input type=file multiple (change)="fileBrowseHandler($event.target.files)" />
         <h2>Attach your resume</h2>
         <p>You can also attach your cover letter. Only pdf files are accepted.</p>
     </div>

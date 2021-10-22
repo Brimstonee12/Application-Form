@@ -50,7 +50,13 @@ export class CandidateFormComponent implements OnInit {
   deleteLinkField(linkField) {
     this.formLinks.removeAt(linkField);
   }
-
+  //test file upload
+  fileToUpload: File | null = null;
+  fileBrowseHandler(file:any){
+    this.fileToUpload = file.item(0);
+    console.log('this.fileUpload :>> ', this.fileToUpload);
+    console.log('file :>> ', file);
+  }
   ngOnInit(): void {
     if (this.handleFormService.formStep === 0) {
       this.handleFormService.activateFormHandling();
