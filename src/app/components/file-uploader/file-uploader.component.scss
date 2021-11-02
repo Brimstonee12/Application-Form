@@ -1,0 +1,43 @@
+.attach-container {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    background-color: lightgray;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+
+    input {
+        opacity: 0;
+        position: absolute;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        cursor: pointer;
+    }
+}
+.attachments-container {
+    margin-top: 5px;
+}
+
+.attachment-item {
+    border-left: 2px solid #f44336;
+    padding-left: 5px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+
+    span {
+        font-size: 16px;
+        margin-right: 15px;
+    }
+    img {
+        cursor: pointer;
+        height: 80%;
+    }
+}

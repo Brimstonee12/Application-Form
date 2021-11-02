@@ -14,12 +14,14 @@ import { MatChipsModule } from '@angular/material/chips'
 import { HttpClientModule } from '@angular/common/http';
 import { CandidateSubmitComponent } from './components/candidate-submit/candidate-submit.component';
 import { FormsModule } from '@angular/forms';
+import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
 @NgModule({
   declarations: [
     AppComponent,
     CandidateFormComponent,
     CandidateQuestionsComponent,
-    CandidateSubmitComponent
+    CandidateSubmitComponent,
+    FileUploaderComponent
   ],
   imports: [
     BrowserModule,

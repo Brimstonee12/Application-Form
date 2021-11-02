@@ -1,0 +1,13 @@
+<div class="eee">
+    <div class="attach-container">
+        <input type=file (change)="fileBrowseHandler($event)" />
+        <h2>Attach your resume</h2>
+        <p>You can also attach your cover letter. Only pdf files are accepted.</p>
+    </div>
+    <div *ngFor="let item of handleFormService.uploadedFiles" class="attachments-container">
+        <div class="attachment-item">
+            <span>{{item && item.file.name}}</span>
+            <img (click)="handleFormService.removeAttachment(item)" src="assets/delete-icon.jpg"/>
+        </div>
+    </div>
+</div>

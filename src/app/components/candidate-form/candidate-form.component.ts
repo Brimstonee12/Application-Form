@@ -13,6 +13,13 @@ export class CandidateFormComponent implements OnInit {
   constructor(public handleFormService: HandleFormService,
     public fb: FormBuilder) {}
 
+    public fakeCountry = [
+      { id: 1, name: 'Arabia' },
+      { id: 2, name: 'Poland' },
+      { id: 3, name: 'USA' },
+      { id: 4, name: 'United Kingdom' },
+    ];
+    
   get formLinks() {
     return this.handleFormService.candidateForm.get('links') as FormArray;
   }
@@ -53,36 +60,6 @@ export class CandidateFormComponent implements OnInit {
     this.formLinks.removeAt(linkField);
   }
 
-  private isPdf(fileType: string): boolean {
-    return fileType.match(/pdf\/*/) !== null;
-  }
- // przeniesc walidacje do osobnego komponentu
-  private validateFile(file: File): Observable<UploadedFile> {
-      console.log('file :>> ', file);
-      const fileReader = new FileReader();
-      return new Observable((observer: Observer<UploadedFile>) => {
-        fileReader.readAsDataURL(file);
-        fileReader.onload = event => {
-          const { type, name } = file 
-          if(this.isPdf(type)){
-            observer.next({file})
-            observer.complete();
-          }
-          else {
-            console.log('wrong Type :>> ');
-            observer.error({error:{ name, errorMessage: 'INVALID_SIZE'}})
-          }
-        }
-        fileReader.onerror = () => {
-          const { name } = file 
-          observer.error({error:{ name, errorMessage: 'INVALID_FILE'}})
-        };
-      })
-  }
-  
-  fileBrowseHandler(fileData): void{
-   this.validateFile(fileData.target.files[0]).subscribe(i => console.log('i :>> ', i))
-  }
   ngOnInit(): void {
     if (this.handleFormService.formStep === 0) {
       this.handleFormService.activateFormHandling();

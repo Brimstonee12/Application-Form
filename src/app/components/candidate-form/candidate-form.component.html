@@ -1,8 +1,5 @@
 <div class="container">
     <form class="form-container" [formGroup]="handleFormService.candidateForm">
-        Value: {{ handleFormService.candidateForm.value | json }}
-        <hr>
-
         <div class="items-container">
             <mat-form-field>
                 <input matInput placeholder="Name" formControlName="name">
@@ -37,7 +34,7 @@
             <mat-form-field class="country-form" appearance="fill">
                 <mat-label>Country</mat-label>
                 <mat-select formControlName="country">
-                    <div *ngFor="let i of handleFormService.fakeCountry">
+                    <div *ngFor="let i of fakeCountry">
                         <mat-option class="country-option" [value]="i.name">{{i.name}}</mat-option>
                     </div>
                 </mat-select>
@@ -68,17 +65,8 @@
 
         <button [disabled]="formLinks.length > 3" class="form-button" mat-raised-button color="primary"
             (click)="addLinkField()">Add Link</button>
-
+    <app-file-uploader></app-file-uploader>
+        
     </form>
 
-    <div class="attach-container">
-        <input type=file (change)="fileBrowseHandler($event)" />
-        <h2>Attach your resume</h2>
-        <p>You can also attach your cover letter. Only pdf files are accepted.</p>
-    </div>
-    <div *ngFor="" class="attachments-container">
-        <div>
-            <p></p>
-        </div>
-    </div>
 </div>
