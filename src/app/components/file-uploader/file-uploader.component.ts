@@ -47,7 +47,9 @@ export class FileUploaderComponent implements OnInit {
         ) {
           this.handleFormService.uploadedFiles.push(validatedFile);
           this.filesError = false;
+          fileData.target.value = '';
         } else {
+          fileData.target.value = '';
           this.handleFileError(validatedFile.error);
         }
       });
