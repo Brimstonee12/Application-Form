@@ -1,7 +1,11 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HandleFormService } from '../../services/handle-form.service';
 import { Observable, Observer, from, of, Subscription } from 'rxjs';
-import { UploadedFile, UploadError } from '../../types/files';
+import {
+  UploadedFile,
+  UploadError,
+  FilesErrorMessages,
+} from '../../types/files';
 import { concatMap, catchError, take } from 'rxjs/operators';
 
 @Component({
@@ -11,9 +15,19 @@ import { concatMap, catchError, take } from 'rxjs/operators';
 })
 export class FileUploaderComponent implements OnInit {
   fileSubscription: Subscription;
+  filesError: boolean = false;
+  fileErrorMessage: string;
+  filesErrorMessages: FilesErrorMessages = {
+    invalidType: 'Your file has Invalid Type. We accept only .pdf files.',
+    invalidSize: 'Your file is to big. We accept up to 10000kB.',
+    invalidFile: 'Your file is Invalid.',
+    invalidFilesLimit: 'Only 2 files can be attached.',
+    invalidSystem: 'Something went wrong :(',
+  };
 
   constructor(public handleFormService: HandleFormService) {}
 
+  //BLAD PRZECHODZI DO SUBSCRIBE
   public fileBrowseHandler(fileData) {
     const files = fileData?.target?.files;
     const numberOfFiles = files.length;
@@ -27,16 +41,30 @@ export class FileUploaderComponent implements OnInit {
         take(numberOfFiles)
       )
       .subscribe((validatedFile: UploadedFile) => {
-        if (this.handleFormService.uploadedFiles.length <= 1) {
+        if (
+          this.handleFormService.uploadedFiles.length <= 1 &&
+          !validatedFile.error
+        ) {
           this.handleFormService.uploadedFiles.push(validatedFile);
+          this.filesError = false;
         } else {
-          //BLAD NA STRONIE MA WYSKOCZYC
-          console.log('ZA DUZO PLIKOW');
+          this.handleFileError(validatedFile.error);
         }
       });
   }
 
-//BLAD Z WYSLANIEM PONOWNIE TEGO SAMEGO PLIKU
+  private handleFileError(error: UploadError) {
+    this.filesError = true;
+    if (error) {
+      this.fileErrorMessage = error.errorMessage;
+    } else if (this.handleFormService.uploadedFiles.length >= 1) {
+      this.fileErrorMessage = this.filesErrorMessages.invalidFilesLimit;
+    } else {
+      this.fileErrorMessage = this.filesErrorMessages.invalidSystem;
+    }
+  }
+
+  //BLAD Z WYSLANIEM PONOWNIE TEGO SAMEGO PLIKU
   private validateFile(file: File): Observable<UploadedFile> {
     const fileReader = new FileReader();
     return new Observable((observer: Observer<UploadedFile>) => {
@@ -48,12 +76,16 @@ export class FileUploaderComponent implements OnInit {
           observer.next({ file });
           observer.complete();
         } else {
-          observer.error({ error: { name, errorMessage: 'INVALID_TYPE' } });
+          observer.error({
+            error: { name, errorMessage: this.filesErrorMessages.invalidType },
+          });
         }
       };
       fileReader.onerror = () => {
         const { name } = file;
-        observer.error({ error: { name, errorMessage: 'INVALID_FILE' } });
+        observer.error({
+          error: { name, errorMessage: this.filesErrorMessages.invalidFile },
+        });
       };
     });
   }
@@ -65,7 +97,9 @@ export class FileUploaderComponent implements OnInit {
   private validateSize(file: File, observer: Observer<UploadedFile>): void {
     const { name, size } = file;
     if (!this.isValidSize(size)) {
-      observer.error({ error: { name, errorMessage: 'INVALID_SIZE' } });
+      observer.error({
+        error: { name, errorMessage: this.filesErrorMessages.invalidSize },
+      });
     }
   }
 
@@ -77,6 +111,8 @@ export class FileUploaderComponent implements OnInit {
   ngOnInit(): void {}
 
   ngOnDestroy() {
-    this.fileSubscription.unsubscribe();
+    if (this.fileSubscription) {
+      this.fileSubscription.unsubscribe();
+    }
   }
 }

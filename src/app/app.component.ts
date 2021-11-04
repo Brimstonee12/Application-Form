@@ -6,7 +6,7 @@ import { HandleFormService } from './services/handle-form.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  validationErrorMsg: string = "Please correct all fields before continue"
+  validationErrorMsg: string = 'Please correct all fields before continue';
 
   constructor(public handleFormService: HandleFormService) {}
 
@@ -17,7 +17,7 @@ export class AppComponent {
       case 3:
         return 100;
       default:
-        return 0
+        return 0;
     }
   }
 
@@ -27,14 +27,21 @@ export class AppComponent {
       if (this.handleFormService.formStep <= 1) {
         this.handleFormService.isPrevButtonDisabled = true;
       }
-    } else if (step === 'next' && this.handleFormService.candidateForm.valid) {
+    } else if (
+      step === 'next' &&
+      this.handleFormService.candidateForm.valid &&
+      this.handleFormService.uploadedFiles.length > 0
+    ) {
       this.handleFormService.formStep++;
-      this.handleFormService.isFormValid = true
+      this.handleFormService.isFormValid = true;
       if (this.handleFormService.formStep > 1) {
         this.handleFormService.isPrevButtonDisabled = false;
       }
-    } else if(step === 'next' && !this.handleFormService.candidateForm.valid){
-      this.handleFormService.isFormValid = false
+    } else if (
+      (step === 'next' && !this.handleFormService.candidateForm.valid) ||
+      (step === 'next' && this.handleFormService.uploadedFiles.length === 0)
+    ) {
+      this.handleFormService.isFormValid = false;
     }
   }
 }
