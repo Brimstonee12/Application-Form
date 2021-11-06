@@ -27,7 +27,6 @@ export class FileUploaderComponent implements OnInit {
 
   constructor(public handleFormService: HandleFormService) {}
 
-  //BLAD PRZECHODZI DO SUBSCRIBE
   public fileBrowseHandler(fileData) {
     const files = fileData?.target?.files;
     const numberOfFiles = files.length;
@@ -66,7 +65,6 @@ export class FileUploaderComponent implements OnInit {
     }
   }
 
-  //BLAD Z WYSLANIEM PONOWNIE TEGO SAMEGO PLIKU
   private validateFile(file: File): Observable<UploadedFile> {
     const fileReader = new FileReader();
     return new Observable((observer: Observer<UploadedFile>) => {

@@ -9,9 +9,11 @@ import { UploadedFile, UploadError } from '../types/files';
 })
 export class HandleFormService {
   public candidateForm: FormGroup;
+  public candidateQuestions: FormGroup;
+
   private countriesApiUrl: string =
     'https://api.smartrecruiters.com/v1/companies/smartrecruiters/postings';
-  public countryList$: Observable<any>;
+  private countryList$: Observable<any>;
   public formStep: number = 0;
   public isPrevButtonDisabled: boolean = true;
   public countriesList: any;
@@ -33,6 +35,13 @@ export class HandleFormService {
       country: ['', [Validators.required]],
       city: ['', [Validators.required]],
       links: this.fb.array([]),
+    });
+
+    this.candidateQuestions = this.fb.group({
+      allowToWork: ['', Validators.required],
+      prevEmployed: ['', Validators.required],
+      gender: '',
+      appliedPlatform: '',
     });
   }
 

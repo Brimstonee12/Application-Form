@@ -27,21 +27,42 @@ export class AppComponent {
       if (this.handleFormService.formStep <= 1) {
         this.handleFormService.isPrevButtonDisabled = true;
       }
-    } else if (
-      step === 'next' &&
-      this.handleFormService.candidateForm.valid &&
-      this.handleFormService.uploadedFiles.length > 0
-    ) {
+    } else if (step === 'next' && this.currentStepIsValid) {
       this.handleFormService.formStep++;
       this.handleFormService.isFormValid = true;
       if (this.handleFormService.formStep > 1) {
         this.handleFormService.isPrevButtonDisabled = false;
       }
-    } else if (
-      (step === 'next' && !this.handleFormService.candidateForm.valid) ||
-      (step === 'next' && this.handleFormService.uploadedFiles.length === 0)
-    ) {
+    } else if (step === 'next' && !this.currentStepIsValid) {
       this.handleFormService.isFormValid = false;
     }
   }
+
+  get currentStepIsValid() {
+    return (
+      (this.handleFormService.formStep === 1 &&
+        this.handleFormService.candidateForm.valid &&
+        this.handleFormService.uploadedFiles.length > 0) ||
+      (this.handleFormService.formStep === 2 &&
+        this.handleFormService.candidateQuestions.valid)
+    );
+  }
+
+  //WITHOUT STEP VALIDATION
+  // handleButtonStep(step: string) {
+  //   if (step === 'prev') {
+  //     this.handleFormService.formStep--;
+  //     if (this.handleFormService.formStep <= 1) {
+  //       this.handleFormService.isPrevButtonDisabled = true;
+  //     }
+  //   } else if (
+  //     step === 'next'
+  //   ) {
+  //     this.handleFormService.formStep++;
+  //     this.handleFormService.isFormValid = true;
+  //     if (this.handleFormService.formStep > 1) {
+  //       this.handleFormService.isPrevButtonDisabled = false;
+  //     }
+  //   }
+  // }
 }
