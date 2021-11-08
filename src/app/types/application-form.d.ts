@@ -3,4 +3,4 @@ export interface ReadyApplicationData {
     value: ValueData;
   }
   
-type ValueData = string | object[];
+export type ValueData = string | object[];

@@ -1,8 +1,46 @@
 .container {
     height: 100%;
     overflow: auto;
+    display:flex;
+    flex-wrap:wrap;
 }
 
 .data-container {
+    height: 65px;
+    width: 50%;
     display:flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+}
+
+.item-container {
+    align-items: center;
+    display: flex;
+    label {
+        font-size: 18px;
+        font-weight: 100;
+    }
+    p {
+        font-size: 15px;
+        margin-left: 10px;
+    }
+
+}
+
+
+.multiple-data {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    label {
+        font-size: 18px;
+        font-weight: 100;
+    }
+    p {
+        font-size: 15px;
+        margin-left: 10px;
+    }
 }

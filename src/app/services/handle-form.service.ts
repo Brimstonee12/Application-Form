@@ -10,21 +10,6 @@ import { ReadyApplicationData } from '../types/application-form';
 export class HandleFormService {
   public candidateForm: FormGroup;
   public candidateQuestions: FormGroup;
-  public readyDataApi: ReadyApplicationData[] = [
-    { name: 'First Name', value: '' },
-    { name: 'Last Name', value: '' },
-    { name: 'Email', value: '' },
-    { name: 'Phone', value: '' },
-    { name: 'Country', value: '' },
-    { name: 'City', value: '' },
-    { name: 'Links', value: [] },
-    { name: 'Are you allow to work in this country?', value: '' },
-    { name: 'Have you been previously employed by ThisCompany?', value: '' },
-    { name: 'Gender', value: '' },
-    { name: 'Job Board', value: '' },
-    { name: 'Attachements', value: [] },
-  ];
-
   private countriesApiUrl: string =
     'https://api.smartrecruiters.com/v1/companies/smartrecruiters/postings';
   private countryList$: Observable<any>;
