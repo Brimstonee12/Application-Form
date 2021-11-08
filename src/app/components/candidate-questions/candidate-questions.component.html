@@ -1,20 +1,36 @@
-<div>
-    <!-- <input type="text" [(ngModel)]="theName" id="dupa" name="dupa" required minlength="4" appForbiddenName="bob" />
-    <p *ngIf="dupa.errors?.required">The Forbidden Word</p>
-    <p>{{theName}}</p> -->
-
-    <label for="firstName">First Name</label>
-    <input type="text" name="firstName" [(ngModel)]="theName" #firstName="ngModel"
-        required />
-    <div *ngIf="firstName.invalid" >
-        <div *ngIf="firstName.errors.required">First Name is required</div>
-    </div>
-    <p>{{theName}}</p>
-
-    <p class="test">My Paragraph</p>
-    <span>My Span</span>
-    <span>My Span2</span>
-    <div>ss</div>
-    <p>Left Paragraph<span>Inside Span</span>Right Paragraph</p>
-    <span>wrrr<p>brtrr</p></span>
+<div class="container">
+    <form class="question-container" [formGroup]="handleFormService.candidateQuestions">
+        <div>
+            <label class="question-title">Are you allow to work in this country?</label>
+            <span class="asterick">*</span>
+        </div>
+        <mat-radio-group formControlName="allowToWork">
+            <mat-radio-button color="primary" value="Yes">Yes</mat-radio-button>
+            <mat-radio-button color="primary" value="No">No</mat-radio-button>
+        </mat-radio-group>
+        <div>
+            <label class="question-title">Have you been previously employed by ThisCompany?</label>
+            <span class="asterick">*</span>
+        </div>
+        <mat-radio-group formControlName="prevEmployed">
+            <mat-radio-button color="primary" value="Yes">Yes</mat-radio-button>
+            <mat-radio-button color="primary" value="No">No</mat-radio-button>
+        </mat-radio-group>
+        <label class="question-title">Select a gender</label>
+        <mat-radio-group formControlName="gender">
+            <mat-radio-button color="primary" value="Male">Male</mat-radio-button>
+            <mat-radio-button color="primary" value="Female">Female</mat-radio-button>
+        </mat-radio-group>
+        <label class="question-title">From what platform did you applied?</label>
+        <div class="job-board-container">
+            <mat-form-field placeholder="Job Board" class="job-board-option" appearance="fill">
+                <mat-label>Job Board</mat-label>
+                <mat-select formControlName="appliedPlatform">
+                    <div *ngFor="let jobBoard of jobBoardsList">
+                        <mat-option class="country-option" [value]="jobBoard">{{jobBoard}}</mat-option>
+                    </div>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </form>
 </div>

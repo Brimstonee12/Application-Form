@@ -8,6 +8,7 @@ import { CandidateQuestionsComponent } from './components/candidate-questions/ca
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input'
+import { MatCheckboxModule } from '@angular/material/checkbox'
 import { MatSelectModule } from '@angular/material/select'
 import { MatButtonModule } from '@angular/material/button'
 import { MatChipsModule } from '@angular/material/chips'
@@ -15,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CandidateSubmitComponent } from './components/candidate-submit/candidate-submit.component';
 import { FormsModule } from '@angular/forms';
 import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
+import { MatRadioModule } from '@angular/material/radio';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,8 +33,10 @@ import { FileUploaderComponent } from './components/file-uploader/file-uploader.
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
+    MatCheckboxModule,
     FormsModule,
     MatChipsModule,
+    MatRadioModule,
     HttpClientModule
   ],
   providers: [],

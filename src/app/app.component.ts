@@ -6,7 +6,7 @@ import { HandleFormService } from './services/handle-form.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  validationErrorMsg: string = "Please correct all fields before continue"
+  validationErrorMsg: string = 'Please correct all fields before continue';
 
   constructor(public handleFormService: HandleFormService) {}
 
@@ -17,24 +17,52 @@ export class AppComponent {
       case 3:
         return 100;
       default:
-        return 0
+        return 0;
     }
   }
 
+  // handleButtonStep(step: string) {
+  //   if (step === 'prev') {
+  //     this.handleFormService.formStep--;
+  //     if (this.handleFormService.formStep <= 1) {
+  //       this.handleFormService.isPrevButtonDisabled = true;
+  //     }
+  //   } else if (step === 'next' && this.currentStepIsValid) {
+  //     this.handleFormService.formStep++;
+  //     this.handleFormService.isFormValid = true;
+  //     if (this.handleFormService.formStep > 1) {
+  //       this.handleFormService.isPrevButtonDisabled = false;
+  //     }
+  //   } else if (step === 'next' && !this.currentStepIsValid) {
+  //     this.handleFormService.isFormValid = false;
+  //   }
+  // }
+
+  get currentStepIsValid() {
+    return (
+      (this.handleFormService.formStep === 1 &&
+        this.handleFormService.candidateForm.valid &&
+        this.handleFormService.uploadedFiles.length > 0) ||
+      (this.handleFormService.formStep === 2 &&
+        this.handleFormService.candidateQuestions.valid)
+    );
+  }
+
+  //WITHOUT STEP VALIDATION
   handleButtonStep(step: string) {
     if (step === 'prev') {
       this.handleFormService.formStep--;
       if (this.handleFormService.formStep <= 1) {
         this.handleFormService.isPrevButtonDisabled = true;
       }
-    } else if (step === 'next' && this.handleFormService.candidateForm.valid) {
+    } else if (
+      step === 'next'
+    ) {
       this.handleFormService.formStep++;
-      this.handleFormService.isFormValid = true
+      this.handleFormService.isFormValid = true;
       if (this.handleFormService.formStep > 1) {
         this.handleFormService.isPrevButtonDisabled = false;
       }
-    } else if(step === 'next' && !this.handleFormService.candidateForm.valid){
-      this.handleFormService.isFormValid = false
     }
   }
 }
