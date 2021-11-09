@@ -35,8 +35,11 @@
             <mat-form-field class="country-form">
                 <mat-label>Country</mat-label>
                 <mat-select formControlName="country">
-                    <div *ngFor="let country of fakeCountry">
-                        <mat-option [value]="country.name">{{country.name}}</mat-option>
+                    <div *ngIf="(handleFormService.countryList$ | async) as countries">
+                        <div *ngFor="let country of countries | orderByName">
+                            <mat-option *ngIf="country" [value]="country">
+                                {{country}}</mat-option>
+                        </div>
                     </div>
                 </mat-select>
                 <mat-error *ngIf="form.country.errors && form.country.errors.required">

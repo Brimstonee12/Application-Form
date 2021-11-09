@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { HandleFormService } from '../../services/handle-form.service';
-
 @Component({
   selector: 'app-candidate-form',
   templateUrl: './candidate-form.component.html',
@@ -12,13 +11,6 @@ export class CandidateFormComponent implements OnInit {
     public handleFormService: HandleFormService,
     private fb: FormBuilder
   ) {}
-
-  fakeCountry = [
-    { id: 1, name: 'Arabia' },
-    { id: 2, name: 'Poland' },
-    { id: 3, name: 'USA' },
-    { id: 4, name: 'United Kingdom' },
-  ];
 
   get formLinks() {
     return this.handleFormService.candidateForm.get('links') as FormArray;
