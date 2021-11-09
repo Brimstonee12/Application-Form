@@ -13,7 +13,7 @@
       <app-candidate-submit *ngIf="handleFormService.formStep === 3"></app-candidate-submit>
     </div>
     <div class="button-container">
-      <button (click)="handleButtonStep('prev')" style="background: #95959547"
+      <button (click)="handleButtonStep('prev')" class="previouse-button"
         [disabled]="handleFormService.isPrevButtonDisabled" mat-raised-button>Previouse Step</button>
       <button *ngIf="handleFormService.formStep !== 3" (click)="handleButtonStep('next')" color="warn"
         mat-raised-button>Next Step</button>

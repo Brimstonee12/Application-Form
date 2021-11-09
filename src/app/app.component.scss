@@ -1,3 +1,5 @@
+@import "../styles/styles.scss";
+
 .container {
     height: 100%;
     display: flex;
@@ -17,7 +19,7 @@
     justify-content: center;
 }
 .title {
-    color: black;
+    color: $text-color;
     font-size: 45px;
 }
 
@@ -40,4 +42,8 @@
 .error-container {
     display: flex;
     justify-content: end;
+}
+
+.previouse-button {
+    background-color: $passive-grey;
 }
