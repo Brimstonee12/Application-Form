@@ -8,23 +8,22 @@ import { ReadyApplicationData } from '../types/application-form';
   providedIn: 'root',
 })
 export class HandleFormService {
-  public candidateForm: FormGroup;
-  public candidateQuestions: FormGroup;
+  candidateForm: FormGroup;
+  candidateQuestions: FormGroup;
   private countriesApiUrl: string =
     'https://api.smartrecruiters.com/v1/companies/smartrecruiters/postings';
   private countryList$: Observable<any>;
-  public formStep: number = 0;
-  public isPrevButtonDisabled: boolean = true;
-  public countriesList: any;
-  public isFormValid: boolean = true;
-  public uploadedFiles: UploadedFile[] = [];
+  formStep: number = 0;
+  isPrevButtonDisabled: boolean = true;
+  isFormValid: boolean = true;
+  uploadedFiles: UploadedFile[] = [];
 
-  constructor(public fb: FormBuilder, private http: HttpClient) {}
+  constructor(private fb: FormBuilder, private http: HttpClient) {}
 
-  public activateFormHandling() {
+  activateFormHandling() {
     this.formStep = 1;
-    this.countryList$ = this.http.get<any>(this.countriesApiUrl);
-    this.countryList$.subscribe((res) => (this.countriesList = res));
+    // this.countryList$ = this.http.get<any>(this.countriesApiUrl);
+    // this.countryList$.subscribe((res) => (this.countriesList = res));
 
     this.candidateForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
@@ -44,7 +43,7 @@ export class HandleFormService {
     });
   }
 
-  public removeAttachment(file: UploadedFile) {
+  removeAttachment(file: UploadedFile) {
     const fileIndex = this.uploadedFiles.indexOf(file);
     this.uploadedFiles.splice(fileIndex, 1);
   }

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="content">
     <div class="title-container">
-      <h1 class="title">Candidate Recruitment Form</h1>
+      <h1>Candidate Recruitment Form</h1>
     </div>
     <div class="progress-bar-container">
       <mat-progress-bar mode="determinate" [value]="handleProgressBar()"></mat-progress-bar>
@@ -15,13 +15,13 @@
     <div class="button-container">
       <button (click)="handleButtonStep('prev')" class="previouse-button"
         [disabled]="handleFormService.isPrevButtonDisabled" mat-raised-button>Previouse Step</button>
-      <button *ngIf="handleFormService.formStep !== 3" (click)="handleButtonStep('next')" color="warn"
+      <button *ngIf="handleFormService.formStep !== 3" (click)="handleButtonStep('next')" class="next-button"
         mat-raised-button>Next Step</button>
-      <button *ngIf="handleFormService.formStep === 3" color="warn" mat-raised-button>Send Application</button>
+      <button *ngIf="handleFormService.formStep === 3" class="next-button" mat-raised-button>Send Application</button>
     </div>
     <div class="error-container">
       <mat-error *ngIf="!handleFormService.isFormValid">
-        {{validationErrorMsg}}
+        Please correct all fields before continue
       </mat-error>
     </div>
   </div>

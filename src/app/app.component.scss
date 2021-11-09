@@ -17,10 +17,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}
-.title {
-    color: $text-color;
-    font-size: 45px;
+    h1 {
+        color: $text-color;
+        font-size: 45px;
+    }   
 }
 
 .progress-bar-container {
@@ -39,11 +39,17 @@
     align-items: center;
 }
 
+.previouse-button {
+    background-color: $passive-grey;
+    color: $text-color;
+}
+
+.next-button {
+    background-color: $danger-red;
+    color: $light_text;
+}
+
 .error-container {
     display: flex;
     justify-content: end;
-}
-
-.previouse-button {
-    background-color: $passive-grey;
 }
