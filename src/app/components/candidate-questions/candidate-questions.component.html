@@ -27,7 +27,7 @@
                 <mat-label>Job Board</mat-label>
                 <mat-select formControlName="appliedPlatform">
                     <div *ngFor="let jobBoard of jobBoardsList">
-                        <mat-option class="country-option" [value]="jobBoard">{{jobBoard}}</mat-option>
+                        <mat-option [value]="jobBoard">{{jobBoard}}</mat-option>
                     </div>
                 </mat-select>
             </mat-form-field>

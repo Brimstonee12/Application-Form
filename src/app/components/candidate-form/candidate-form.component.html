@@ -3,13 +3,13 @@
         <div class="items-container">
             <mat-form-field>
                 <input matInput placeholder="Name" formControlName="name">
-                <mat-error *ngIf="formName.invalid && formName.touched" class="input-error">
+                <mat-error *ngIf="form.name.errors && form.name.errors.required">
                     Please type correct Name
                 </mat-error>
             </mat-form-field>
             <mat-form-field>
                 <input matInput placeholder="Lastname" formControlName="lastName">
-                <mat-error *ngIf="formLastName.invalid && formLastName.touched">
+                <mat-error *ngIf="form.lastName.errors && form.lastName.errors.required">
                     Please type correct Last Name
                 </mat-error>
             </mat-form-field>
@@ -18,55 +18,54 @@
         <div class="items-container">
             <mat-form-field>
                 <input matInput placeholder="Email" formControlName="email">
-                <mat-error *ngIf="formEmail.invalid && formEmail.touched">
+                <mat-error
+                    *ngIf="form.email.errors && form.email.errors.required || form.email.errors && form.email.errors.email">
                     Please type correct Email
                 </mat-error>
             </mat-form-field>
             <mat-form-field>
                 <input matInput placeholder="Phone Number" formControlName="phone">
-                <mat-error *ngIf="formPhone.invalid && formPhone.touched">
+                <mat-error *ngIf="form.phone.errors && form.phone.errors.required">
                     Please type correct Phone Number
                 </mat-error>
             </mat-form-field>
         </div>
 
         <div class="items-container">
-            <mat-form-field class="country-form" appearance="fill">
+            <mat-form-field class="country-form">
                 <mat-label>Country</mat-label>
                 <mat-select formControlName="country">
-                    <div *ngFor="let i of fakeCountry">
-                        <mat-option class="country-option" [value]="i.name">{{i.name}}</mat-option>
+                    <div *ngFor="let country of fakeCountry">
+                        <mat-option [value]="country.name">{{country.name}}</mat-option>
                     </div>
                 </mat-select>
-                <mat-error *ngIf="formCountry.invalid && formCountry.touched">
+                <mat-error *ngIf="form.country.errors && form.country.errors.required">
                     Country is required
                 </mat-error>
             </mat-form-field>
             <mat-form-field>
                 <input matInput placeholder="City" formControlName="city">
-                <mat-error *ngIf="formCity.invalid && formCity.touched">
+                <mat-error *ngIf="form.city.errors && form.city.errors.required">
                     Please type correct City
                 </mat-error>
             </mat-form-field>
         </div>
 
-            <div formArrayName="links">
-                <div *ngFor="let linkField of formLinks.controls; let i=index" [formGroupName]="i">
-                    <mat-form-field class="link-form">
-                        <input matInput placeholder="Link" formControlName="link">
-                        <mat-error *ngIf="formLinks.touched">
-                            Field cannot be empty
-                        </mat-error>
-                    </mat-form-field>
-                    <button class="form-button" mat-raised-button color="warn"
-                        (click)="deleteLinkField(i)">Delete</button>
-                </div>
+        <div formArrayName="links">
+            <div *ngFor="let linkField of formLinks.controls; let linkIndex=index" [formGroupName]="linkIndex">
+                <mat-form-field class="link-form">
+                    <input matInput placeholder="Link" formControlName="link">
+                    <mat-error *ngIf="linkField.touched">
+                        Field cannot be empty
+                    </mat-error>
+                </mat-form-field>
+                <button class="form-button" mat-raised-button class="delete-button"
+                    (click)="deleteLinkField(linkIndex)">Delete</button>
             </div>
+        </div>
 
-        <button [disabled]="formLinks.length > 3" class="form-button" mat-raised-button color="primary"
-            (click)="addLinkField()">Add Link</button>
-    <app-file-uploader></app-file-uploader>
-        
+        <button [disabled]="formLinks.length > 2" class="add-button" mat-raised-button (click)="addLinkField()">Add
+            Link</button>
+        <app-file-uploader></app-file-uploader>
     </form>
-
 </div>

@@ -3,3 +3,17 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-form-field {
+    width: 300px;
+}
+
+.mat-error {
+    font-size: 13px !important;
+}
+
+.mat-option {
+    height: 35px;
+    max-height: 35px;
+    font-size: 14px !important;
+}
