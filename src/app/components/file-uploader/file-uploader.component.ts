@@ -14,10 +14,10 @@ import { concatMap, catchError, take } from 'rxjs/operators';
   styleUrls: ['./file-uploader.component.scss'],
 })
 export class FileUploaderComponent {
-  fileSubscription: Subscription;
+  private fileSubscription: Subscription;
   filesError: boolean = false;
   fileErrorMessage: string;
-  filesErrorMessages: FilesErrorMessages = {
+  private filesErrorMessages: FilesErrorMessages = {
     invalidType: 'Your file has Invalid Type. We accept only .pdf files.',
     invalidSize: 'Your file is to big. We accept up to 10000kB.',
     invalidFile: 'Your file is Invalid.',
@@ -27,7 +27,7 @@ export class FileUploaderComponent {
 
   constructor(public handleFormService: HandleFormService) {}
 
-  public fileBrowseHandler(fileData) {
+  fileBrowseHandler(fileData) {
     const files = fileData?.target?.files;
     const numberOfFiles = files.length;
     this.fileSubscription = from(files)

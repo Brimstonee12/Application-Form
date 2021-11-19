@@ -17,3 +17,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     max-height: 35px;
     font-size: 14px !important;
 }
+
+.mat-radio-group {
+    width: 400px !important;
+    height: 50px !important;
+    display: flex !important;
+    justify-content: space-around !important;
+    margin-bottom: 30px !important;
+}
+
+.mat-radio-button {
+    width: 30% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}

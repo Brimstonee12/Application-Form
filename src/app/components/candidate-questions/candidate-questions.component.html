@@ -1,5 +1,5 @@
 <div class="container">
-    <form class="question-container" [formGroup]="handleFormService.candidateQuestions">
+    <form [formGroup]="handleFormService.candidateQuestions">
         <div>
             <label class="question-title">Are you allow to work in this country?</label>
             <span class="asterick">*</span>
@@ -23,7 +23,7 @@
         </mat-radio-group>
         <label class="question-title">From what platform did you applied?</label>
         <div class="job-board-container">
-            <mat-form-field placeholder="Job Board" class="job-board-option" appearance="fill">
+            <mat-form-field placeholder="Job Board" class="job-board-option">
                 <mat-label>Job Board</mat-label>
                 <mat-select formControlName="appliedPlatform">
                     <div *ngFor="let jobBoard of jobBoardsList">
