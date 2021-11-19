@@ -35,12 +35,16 @@
             <mat-form-field class="country-form">
                 <mat-label>Country</mat-label>
                 <mat-select formControlName="country">
-                    <div *ngIf="(handleFormService.countryList$ | async) as countries">
+                    <div *ngIf="(handleFormService.countryList$ | async) as countries else mockCountry">
                         <div *ngFor="let country of countries | orderByName">
                             <mat-option *ngIf="country" [value]="country">
                                 {{country}}</mat-option>
                         </div>
                     </div>
+                    <ng-template #mockCountry>
+                        <mat-option *ngIf="form.country.value" [value]="form.country.value">
+                            {{form.country.value}}</mat-option>
+                    </ng-template>
                 </mat-select>
                 <mat-error *ngIf="form.country.errors && form.country.errors.required">
                     Country is required
@@ -62,8 +66,7 @@
                         Field cannot be empty
                     </mat-error>
                 </mat-form-field>
-                <button class="form-button" mat-raised-button class="delete-button"
-                    (click)="deleteLinkField(linkIndex)">Delete</button>
+                <button mat-raised-button class="delete-button" (click)="deleteLinkField(linkIndex)">Delete</button>
             </div>
         </div>
 

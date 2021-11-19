@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HandleFormService } from '../../services/handle-form.service';
 import { Observable, Observer, from, of, Subscription } from 'rxjs';
 import {
@@ -13,7 +13,7 @@ import { concatMap, catchError, take } from 'rxjs/operators';
   templateUrl: './file-uploader.component.html',
   styleUrls: ['./file-uploader.component.scss'],
 })
-export class FileUploaderComponent implements OnInit {
+export class FileUploaderComponent {
   fileSubscription: Subscription;
   filesError: boolean = false;
   fileErrorMessage: string;
@@ -40,6 +40,7 @@ export class FileUploaderComponent implements OnInit {
         take(numberOfFiles)
       )
       .subscribe((validatedFile: UploadedFile) => {
+        console.log('validatedFile :>> ', validatedFile);
         if (
           this.handleFormService.uploadedFiles.length <= 1 &&
           !validatedFile.error
@@ -107,8 +108,6 @@ export class FileUploaderComponent implements OnInit {
     const toKByte = size / 1024;
     return toKByte <= 1000;
   }
-
-  ngOnInit(): void {}
 
   ngOnDestroy() {
     if (this.fileSubscription) {
