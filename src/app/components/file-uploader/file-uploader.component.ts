@@ -40,7 +40,6 @@ export class FileUploaderComponent {
         take(numberOfFiles)
       )
       .subscribe((validatedFile: UploadedFile) => {
-        console.log('validatedFile :>> ', validatedFile);
         if (
           this.handleFormService.uploadedFiles.length <= 1 &&
           !validatedFile.error
@@ -107,6 +106,11 @@ export class FileUploaderComponent {
   private isValidSize(size: number): boolean {
     const toKByte = size / 1024;
     return toKByte <= 1000;
+  }
+
+  removeAttachment(file: UploadedFile) {
+    const fileIndex = this.handleFormService.uploadedFiles.indexOf(file);
+    this.handleFormService.uploadedFiles.splice(fileIndex, 1);
   }
 
   ngOnDestroy() {

@@ -7,9 +7,9 @@ import { ReadyApplicationData, ValueData } from '../../types/application-form';
   styleUrls: ['./candidate-submit.component.scss'],
 })
 export class CandidateSubmitComponent implements OnInit {
-  constructor(public handleFormService: HandleFormService) {}
+  constructor(private handleFormService: HandleFormService) {}
 
-  public mockReadyData: ReadyApplicationData[] = [
+  mockReadyData: ReadyApplicationData[] = [
     { name: 'First Name', value: 'Tomasz' },
     { name: 'Last Name', value: 'Karliński' },
     { name: 'Email', value: 'brimstonee12@gmail.com' },
@@ -40,7 +40,7 @@ export class CandidateSubmitComponent implements OnInit {
     return applicationData;
   }
 
-  prepareDataForApi() {
+  private prepareDataForApi() {
     const applicationFormData = this.getDataFromCandidateForm();
     let item = 0;
     for (let readyItem of this.mockReadyData) {
@@ -50,12 +50,10 @@ export class CandidateSubmitComponent implements OnInit {
   }
 
   isStringValue(value: ValueData) {
-    return typeof value === 'string'
+    return typeof value === 'string';
   }
 
   ngOnInit(): void {
     this.prepareDataForApi();
-    console.log('this.mockReadyData :>> ', this.mockReadyData);
-   
   }
 }

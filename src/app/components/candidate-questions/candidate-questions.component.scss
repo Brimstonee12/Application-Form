@@ -1,9 +1,12 @@
+@import "../../../styles/colors.scss";
+
 .container {
     height: 100%;
     overflow: auto;
 }
 
 .question-title {
+    color: $text-color;
     font-size: 18px;
 }
 

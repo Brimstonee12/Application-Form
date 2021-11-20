@@ -1,3 +1,5 @@
+@import "../../../styles/colors.scss";
+
 .container {
     height: 100%;
     overflow: auto;
@@ -17,15 +19,17 @@
 .item-container {
     align-items: center;
     display: flex;
-    label {
+    h6 {
+        color: $text-color;
+        margin: 0;
         font-size: 18px;
         font-weight: 100;
     }
     p {
+        color: $text-color;
         font-size: 15px;
         margin-left: 10px;
     }
-
 }
 
 .multiple-data {
@@ -33,11 +37,14 @@
     align-items: center;
     flex-direction: column;
     height: 100%;
-    label {
+    h6 {
+        color: $text-color;
+        margin: 0;
         font-size: 18px;
         font-weight: 100;
     }
     p {
+        color: $text-color;
         font-size: 15px;
         margin-left: 10px;
     }

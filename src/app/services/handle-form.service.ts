@@ -13,7 +13,7 @@ export class HandleFormService {
   candidateForm: FormGroup;
   candidateQuestions: FormGroup;
   private countriesApiUrl: string = 'https://restcountries.com/v3.1/all';
-  countryList$: Observable<any>;
+  countryList$: Observable<Country[]>;
   formStep: number = 0;
   isPrevButtonDisabled: boolean = true;
   isFormValid: boolean = true;
@@ -42,8 +42,8 @@ export class HandleFormService {
     });
   }
 
-  removeAttachment(file: UploadedFile) {
-    const fileIndex = this.uploadedFiles.indexOf(file);
-    this.uploadedFiles.splice(fileIndex, 1);
-  }
+  // removeAttachment(file: UploadedFile) {
+  //   const fileIndex = this.uploadedFiles.indexOf(file);
+  //   this.uploadedFiles.splice(fileIndex, 1);
+  // }
 }

@@ -11,7 +11,7 @@
         <div *ngFor="let item of handleFormService.uploadedFiles" class="attachments-container">
             <div class="attachment-item">
                 <span>{{item && item.file.name}}</span>
-                <img (click)="handleFormService.removeAttachment(item)" src="assets/delete-icon.jpg" />
+                <img (click)="removeAttachment(item)" src="assets/delete-icon.jpg" />
             </div>
         </div>
     </div>
