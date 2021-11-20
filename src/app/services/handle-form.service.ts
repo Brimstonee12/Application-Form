@@ -18,6 +18,7 @@ export class HandleFormService {
   isPrevButtonDisabled: boolean = true;
   isFormValid: boolean = true;
   uploadedFiles: UploadedFile[] = [];
+  acceptTerms: boolean = false;
   applicationSend: boolean = false;
 
   constructor(private fb: FormBuilder, private http: HttpClient) {}
@@ -54,5 +55,6 @@ export class HandleFormService {
   returnToNewApplication(){
     this.applicationSend = false
     this.formStep = 0;
+    this.acceptTerms = false;
   }
 }

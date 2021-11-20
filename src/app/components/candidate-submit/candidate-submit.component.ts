@@ -7,7 +7,7 @@ import { ReadyApplicationData, ValueData } from '../../types/application-form';
   styleUrls: ['./candidate-submit.component.scss'],
 })
 export class CandidateSubmitComponent implements OnInit {
-  constructor(private handleFormService: HandleFormService) {}
+  constructor(public handleFormService: HandleFormService) {}
 
   mockReadyData: ReadyApplicationData[] = [
     { name: 'First Name', value: '' },
@@ -53,6 +53,9 @@ export class CandidateSubmitComponent implements OnInit {
     return typeof value === 'string';
   }
 
+  handleAcceptTerms() {
+    this.handleFormService.acceptTerms = !this.handleFormService.acceptTerms
+  }
   ngOnInit(): void {
     this.prepareDataForApi();
   }

@@ -15,4 +15,7 @@
             <p *ngFor="let item of data.value">{{item.file.name}}</p>
         </div>
     </div>
+
+    <mat-checkbox color="primary" [checked]="this.handleFormService.acceptTerms" (change)="handleAcceptTerms()">Accept
+        Terms</mat-checkbox>
 </div>

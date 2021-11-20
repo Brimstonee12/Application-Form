@@ -5,6 +5,7 @@
     overflow: auto;
     display:flex;
     flex-wrap:wrap;
+    justify-content: center;
 }
 
 .data-container {
@@ -12,8 +13,8 @@
     width: 50%;
     display:flex;
     align-items: center;
-    justify-content: center;
     overflow: auto;
+    justify-content: center;
 }
 
 .item-container {
