@@ -10,17 +10,17 @@ export class CandidateSubmitComponent implements OnInit {
   constructor(private handleFormService: HandleFormService) {}
 
   mockReadyData: ReadyApplicationData[] = [
-    { name: 'First Name', value: 'Tomasz' },
-    { name: 'Last Name', value: 'Karliński' },
-    { name: 'Email', value: 'brimstonee12@gmail.com' },
-    { name: 'Phone', value: '734234234' },
-    { name: 'Country', value: 'Poland' },
-    { name: 'City', value: 'Cracow' },
+    { name: 'First Name', value: '' },
+    { name: 'Last Name', value: '' },
+    { name: 'Email', value: '' },
+    { name: 'Phone', value: '' },
+    { name: 'Country', value: '' },
+    { name: 'City', value: '' },
     { name: 'Links', value: [] },
-    { name: 'Are you allow to work in this country?', value: 'Yes' },
-    { name: 'Have you been previously employed by ThisCompany?', value: 'No' },
-    { name: 'Gender', value: 'Male' },
-    { name: 'Job Board', value: 'Indeed' },
+    { name: 'Are you allow to work in this country?', value: '' },
+    { name: 'Have you been previously employed by ThisCompany?', value: '' },
+    { name: 'Gender', value: '' },
+    { name: 'Job Board', value: '' },
     { name: 'Attachements', value: [] },
   ];
 

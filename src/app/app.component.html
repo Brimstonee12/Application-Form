@@ -10,14 +10,15 @@
       <app-candidate-form *ngIf="handleFormService.formStep === 0 || handleFormService.formStep === 1">
       </app-candidate-form>
       <app-candidate-questions *ngIf="handleFormService.formStep === 2"></app-candidate-questions>
-      <app-candidate-submit *ngIf="handleFormService.formStep === 3"></app-candidate-submit>
+      <app-candidate-submit *ngIf="handleFormService.formStep === 3 && !handleFormService.applicationSend"></app-candidate-submit>
+      <app-application-send *ngIf="handleFormService.formStep === 3 && handleFormService.applicationSend"></app-application-send>
     </div>
-    <div class="button-container">
+    <div *ngIf="!handleFormService.applicationSend" class="button-container">
       <button (click)="handleButtonStep('prev')" class="previouse-button"
         [disabled]="handleFormService.isPrevButtonDisabled" mat-raised-button>Previouse Step</button>
       <button *ngIf="handleFormService.formStep !== 3" (click)="handleButtonStep('next')" class="next-button"
         mat-raised-button>Next Step</button>
-      <button *ngIf="handleFormService.formStep === 3" class="next-button" mat-raised-button>Send Application</button>
+      <button *ngIf="handleFormService.formStep === 3" (click)="handleFormService.sendApplication()" class="next-button" mat-raised-button>Send Application</button>
     </div>
     <div class="error-container">
       <mat-error *ngIf="!handleFormService.isFormValid">

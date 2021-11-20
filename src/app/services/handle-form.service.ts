@@ -18,6 +18,7 @@ export class HandleFormService {
   isPrevButtonDisabled: boolean = true;
   isFormValid: boolean = true;
   uploadedFiles: UploadedFile[] = [];
+  applicationSend: boolean = false;
 
   constructor(private fb: FormBuilder, private http: HttpClient) {}
 
@@ -42,8 +43,16 @@ export class HandleFormService {
     });
   }
 
-  // removeAttachment(file: UploadedFile) {
-  //   const fileIndex = this.uploadedFiles.indexOf(file);
-  //   this.uploadedFiles.splice(fileIndex, 1);
-  // }
+  sendApplication() {
+    this.applicationSend = true
+    //there will be shot to db
+    this.uploadedFiles = []
+    this.candidateForm.reset()
+    this.candidateQuestions.reset()
+  }
+
+  returnToNewApplication(){
+    this.applicationSend = false
+    this.formStep = 0;
+  }
 }
