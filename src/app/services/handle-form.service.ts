@@ -1,34 +1,34 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { UploadedFile } from '../types/files';
 import { ReadyApplicationData } from '../types/application-form';
+import { Country } from "../types/country"
+import { Observable } from 'rxjs';
+
 @Injectable({
   providedIn: 'root',
 })
 export class HandleFormService {
-  public candidateForm: FormGroup;
-  public candidateQuestions: FormGroup;
-  private countriesApiUrl: string =
-    'https://api.smartrecruiters.com/v1/companies/smartrecruiters/postings';
-  private countryList$: Observable<any>;
-  public formStep: number = 0;
-  public isPrevButtonDisabled: boolean = true;
-  public countriesList: any;
-  public isFormValid: boolean = true;
-  public uploadedFiles: UploadedFile[] = [];
+  candidateForm: FormGroup;
+  candidateQuestions: FormGroup;
+  private countriesApiUrl: string = 'https://restcountries.com/v3.1/all';
+  countryList$: Observable<Country[]>;
+  formStep: number = 0;
+  isPrevButtonDisabled: boolean = true;
+  isFormValid: boolean = true;
+  uploadedFiles: UploadedFile[] = [];
+  acceptTerms: boolean = false;
+  applicationSend: boolean = false;
 
-  constructor(public fb: FormBuilder, private http: HttpClient) {}
+  constructor(private fb: FormBuilder, private http: HttpClient) {}
 
-  public activateFormHandling() {
+  activateFormHandling() {
     this.formStep = 1;
-    this.countryList$ = this.http.get<any>(this.countriesApiUrl);
-    this.countryList$.subscribe((res) => (this.countriesList = res));
-
+    this.countryList$ = this.http.get<Country[]>(this.countriesApiUrl);
     this.candidateForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],
-      lastName: ['', [Validators.required, Validators.minLength(3)]],
+      name: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required]],
       country: ['', [Validators.required]],
@@ -44,8 +44,18 @@ export class HandleFormService {
     });
   }
 
-  public removeAttachment(file: UploadedFile) {
-    const fileIndex = this.uploadedFiles.indexOf(file);
-    this.uploadedFiles.splice(fileIndex, 1);
+  sendApplication() {
+    this.applicationSend = true
+    //there will be shot to db
+    this.uploadedFiles = []
+    this.candidateForm.reset()
+    this.candidateQuestions.reset()
+  }
+
+  returnToNewApplication(){
+    this.applicationSend = false
+    this.formStep = 0;
+    this.acceptTerms = false;
+    this.isPrevButtonDisabled = true
   }
 }

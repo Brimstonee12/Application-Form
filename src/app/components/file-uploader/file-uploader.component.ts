@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HandleFormService } from '../../services/handle-form.service';
 import { Observable, Observer, from, of, Subscription } from 'rxjs';
 import {
@@ -13,11 +13,11 @@ import { concatMap, catchError, take } from 'rxjs/operators';
   templateUrl: './file-uploader.component.html',
   styleUrls: ['./file-uploader.component.scss'],
 })
-export class FileUploaderComponent implements OnInit {
-  fileSubscription: Subscription;
+export class FileUploaderComponent {
+  private fileSubscription: Subscription;
   filesError: boolean = false;
   fileErrorMessage: string;
-  filesErrorMessages: FilesErrorMessages = {
+  private filesErrorMessages: FilesErrorMessages = {
     invalidType: 'Your file has Invalid Type. We accept only .pdf files.',
     invalidSize: 'Your file is to big. We accept up to 10000kB.',
     invalidFile: 'Your file is Invalid.',
@@ -27,7 +27,7 @@ export class FileUploaderComponent implements OnInit {
 
   constructor(public handleFormService: HandleFormService) {}
 
-  public fileBrowseHandler(fileData) {
+  fileBrowseHandler(fileData) {
     const files = fileData?.target?.files;
     const numberOfFiles = files.length;
     this.fileSubscription = from(files)
@@ -108,7 +108,10 @@ export class FileUploaderComponent implements OnInit {
     return toKByte <= 1000;
   }
 
-  ngOnInit(): void {}
+  removeAttachment(file: UploadedFile) {
+    const fileIndex = this.handleFormService.uploadedFiles.indexOf(file);
+    this.handleFormService.uploadedFiles.splice(fileIndex, 1);
+  }
 
   ngOnDestroy() {
     if (this.fileSubscription) {

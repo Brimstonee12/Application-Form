@@ -1,23 +1,21 @@
 <div *ngIf="mockReadyData" class="container">
-
-        <div class="data-container" *ngFor="let data of mockReadyData">
-                <div *ngIf="isStringValue(data.value)" class="item-container">
-                    <label>{{data.name}}: </label>
-                    <p>{{data.value}}</p>
-
-                </div>
-
-                <div *ngIf="!isStringValue(data.value) && data.name === 'Links'" class="multiple-data">
-                   <label>{{data.name}}: </label>
-                    <p *ngFor="let item of data.value">{{item.link}}</p>
-               </div>
-
-               <div *ngIf="!isStringValue(data.value) && data.name === 'Attachements'" class="multiple-data">
-                <label>{{data.name}}: </label>
-                <p *ngFor="let item of data.value">{{item.file.name}}</p>
-            </div>
-          
+    <div *ngFor="let data of mockReadyData" class="data-container">
+        <div *ngIf="isStringValue(data.value)" class="item-container">
+            <h6>{{data.name}}: </h6>
+            <p>{{data.value}}</p>
         </div>
+        <div *ngIf="!isStringValue(data.value) && data.name === 'Links'" class="multiple-data"
+            [ngStyle]="data.value.length === 0 && {'justify-content': 'center'}">
+            <h6>{{data.name}}: </h6>
+            <p *ngFor="let item of data.value">{{item.link}}</p>
+        </div>
+        <div *ngIf="!isStringValue(data.value) && data.name === 'Attachements'"
+            [ngStyle]="data.value.length === 0 && {'justify-content': 'center'}" class="multiple-data">
+            <h6>{{data.name}}: </h6>
+            <p *ngFor="let item of data.value">{{item.file.name}}</p>
+        </div>
+    </div>
 
-
+    <mat-checkbox color="primary" [checked]="this.handleFormService.acceptTerms" (change)="handleAcceptTerms()">Accept
+        Terms</mat-checkbox>
 </div>

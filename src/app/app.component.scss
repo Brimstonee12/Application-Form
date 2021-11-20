@@ -1,3 +1,5 @@
+@import "../styles/styles.scss";
+
 .container {
     height: 100%;
     display: flex;
@@ -15,10 +17,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}
-.title {
-    color: black;
-    font-size: 45px;
+    h1 {
+        color: $text-color;
+        font-size: 45px;
+    }   
 }
 
 .progress-bar-container {
@@ -35,6 +37,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.previouse-button {
+    background-color: $passive-grey;
+    color: $text-color;
+}
+
+.next-button {
+    background-color: $danger-red;
+    color: $light_text;
 }
 
 .error-container {

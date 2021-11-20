@@ -17,13 +17,17 @@ import { CandidateSubmitComponent } from './components/candidate-submit/candidat
 import { FormsModule } from '@angular/forms';
 import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
 import { MatRadioModule } from '@angular/material/radio';
+import { SortByPipe } from "../app/pipes/sort-by.pipe";
+import { ApplicationSendComponent } from './components/application-send/application-send.component'
 @NgModule({
   declarations: [
     AppComponent,
     CandidateFormComponent,
     CandidateQuestionsComponent,
     CandidateSubmitComponent,
-    FileUploaderComponent
+    FileUploaderComponent,
+    SortByPipe,
+    ApplicationSendComponent
   ],
   imports: [
     BrowserModule,

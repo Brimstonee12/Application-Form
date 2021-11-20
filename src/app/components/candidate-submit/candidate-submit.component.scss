@@ -1,8 +1,11 @@
+@import "../../../styles/colors.scss";
+
 .container {
     height: 100%;
     overflow: auto;
     display:flex;
     flex-wrap:wrap;
+    justify-content: center;
 }
 
 .data-container {
@@ -10,36 +13,39 @@
     width: 50%;
     display:flex;
     align-items: center;
-    justify-content: center;
     overflow: auto;
+    justify-content: center;
 }
 
 .item-container {
     align-items: center;
     display: flex;
-    label {
+    h6 {
+        color: $text-color;
+        margin: 0;
         font-size: 18px;
         font-weight: 100;
     }
     p {
+        color: $text-color;
         font-size: 15px;
         margin-left: 10px;
     }
-
 }
-
 
 .multiple-data {
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
     height: 100%;
-    label {
+    h6 {
+        color: $text-color;
+        margin: 0;
         font-size: 18px;
         font-weight: 100;
     }
     p {
+        color: $text-color;
         font-size: 15px;
         margin-left: 10px;
     }

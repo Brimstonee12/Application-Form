@@ -1,3 +1,5 @@
+@import "../../../styles/styles.scss";
+
 .container {
     height: 100%;
     overflow: auto;
@@ -16,29 +18,20 @@
     margin-bottom: 10px;
 }
 
-.mat-form-field {
-    width: 300px;
-}
-
-.country-option {
-    height: 35px;
-    max-height: 35px;
-    font-size: 14px !important;
-}
-
-.form-button {
+.delete-button {
     width: 90px;
     margin: 15px 0;
+    background-color: $danger-red;
+    color: $light_text;
+}
+
+.add-button {
+    width: 90px;
+    margin: 15px 0;
+    background-color: $passive-blue;
+    color: $light_text;
 }
 
 .link-form {
     margin-right: 15px !important;
-}
-
-.mat-error {
-    font-size: 13px !important;
-}
-
-::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
-    padding: .75em 0 0 0 !important;
 }
