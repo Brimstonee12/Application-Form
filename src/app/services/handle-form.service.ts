@@ -56,5 +56,6 @@ export class HandleFormService {
     this.applicationSend = false
     this.formStep = 0;
     this.acceptTerms = false;
+    this.isPrevButtonDisabled = true
   }
 }
