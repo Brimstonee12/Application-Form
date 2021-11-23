@@ -5,11 +5,32 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .mat-form-field {
     width: 300px;
+    @media (max-width: 410px){
+        width: 100%;
+        label {
+            font-size: 13px;
+        }
+        input {
+            font-size: 13px;
+        }
+    }
 }
+
+@media (max-width: 410px){
+    .mat-form-field-flex {
+        height: 42px;
+}}
 
 .mat-error {
     font-size: 13px !important;
-}
+    @media (max-width: 410px){
+        font-size: 10px !important;
+}}
+
+@media (max-width: 410px){
+    .mat-select {
+        font-size: 13px;
+}}
 
 .mat-option {
     height: 35px;
@@ -31,4 +52,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+    @media (max-width: 410px){
+        font-size: 15px;
+    }
 }
+
+@media (max-width: 410px){
+    .mat-checkbox {
+        font-size: 14px;
+        margin-top: 10px;
+}}

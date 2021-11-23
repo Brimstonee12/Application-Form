@@ -10,6 +10,12 @@
 .content {
     width: 70%;
     height: 100%;
+    @media (max-width: 1110px){
+        width: 90%;
+    }
+    @media (max-width: 710px){
+        width: 96%;
+    }
 }
 
 .title-container {
@@ -20,15 +26,27 @@
     h1 {
         color: $text-color;
         font-size: 45px;
+        @media (max-width: 600px){
+            font-size: 30px;
+        }
+        @media (max-width: 410px){
+            font-size: 23px;
+        }
     }   
 }
 
 .progress-bar-container {
     height: 10%;
+    @media (max-width: 410px){
+        height: 5%;
+    }
 }
 
 .steps-container {
     height: 50%;
+    @media (max-width: 410px){
+        height: 65%;
+    }
 }
 
 .button-container {
@@ -42,14 +60,22 @@
 .previouse-button {
     background-color: $passive-grey;
     color: $text-color;
+    @media (max-width: 410px){
+        height: 35px;
+        font-size: 12px !important;
+    }
 }
 
 .next-button {
     background-color: $danger-red;
     color: $light_text;
+    @media (max-width: 410px){
+        height: 35px;
+        font-size: 12px !important;
+    }
 }
 
 .error-container {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
