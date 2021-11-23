@@ -7,13 +7,25 @@
     align-items: center;
     img {
         height: 250px;
+        @media (max-width: 410px){
+            height: 150px;
+        }
     }
     h1 {
         margin: 40px 0;
         color: $text-color;
+        @media (max-width: 410px){
+            font-size: 30px;
+            margin: 45px 0;
+            text-align: center;
+        }
     }
     button {
         background-color: $passive-blue;
         color: $light_text;
+        @media (max-width: 410px){
+            height: 35px;
+            font-size: 12px !important;
+        }
     }
 }
