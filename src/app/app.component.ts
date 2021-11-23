@@ -19,22 +19,22 @@ export class AppComponent {
     }
   }
 
-  // handleButtonStep(step: string) {
-  //   if (step === 'prev') {
-  //     this.handleFormService.formStep--;
-  //     if (this.handleFormService.formStep <= 1) {
-  //       this.handleFormService.isPrevButtonDisabled = true;
-  //     }
-  //   } else if (step === 'next' && this.currentStepIsValid) {
-  //     this.handleFormService.formStep++;
-  //     this.handleFormService.isFormValid = true;
-  //     if (this.handleFormService.formStep > 1) {
-  //       this.handleFormService.isPrevButtonDisabled = false;
-  //     }
-  //   } else if (step === 'next' && !this.currentStepIsValid) {
-  //     this.handleFormService.isFormValid = false;
-  //   }
-  // }
+  handleButtonStep(step: string) {
+    if (step === 'prev') {
+      this.handleFormService.formStep--;
+      if (this.handleFormService.formStep <= 1) {
+        this.handleFormService.isPrevButtonDisabled = true;
+      }
+    } else if (step === 'next' && this.currentStepIsValid) {
+      this.handleFormService.formStep++;
+      this.handleFormService.isFormValid = true;
+      if (this.handleFormService.formStep > 1) {
+        this.handleFormService.isPrevButtonDisabled = false;
+      }
+    } else if (step === 'next' && !this.currentStepIsValid) {
+      this.handleFormService.isFormValid = false;
+    }
+  }
 
   get currentStepIsValid() {
     return (
@@ -47,20 +47,20 @@ export class AppComponent {
   }
 
   //WITHOUT STEP VALIDATION
-  handleButtonStep(step: string) {
-    if (step === 'prev') {
-      this.handleFormService.formStep--;
-      if (this.handleFormService.formStep <= 1) {
-        this.handleFormService.isPrevButtonDisabled = true;
-      }
-    } else if (step === 'next') {
-      this.handleFormService.formStep++;
-      this.handleFormService.isFormValid = true;
-      if (this.handleFormService.formStep > 1) {
-        this.handleFormService.isPrevButtonDisabled = false;
-      }
-    }
-  }
+  // handleButtonStep(step: string) {
+  //   if (step === 'prev') {
+  //     this.handleFormService.formStep--;
+  //     if (this.handleFormService.formStep <= 1) {
+  //       this.handleFormService.isPrevButtonDisabled = true;
+  //     }
+  //   } else if (step === 'next') {
+  //     this.handleFormService.formStep++;
+  //     this.handleFormService.isFormValid = true;
+  //     if (this.handleFormService.formStep > 1) {
+  //       this.handleFormService.isPrevButtonDisabled = false;
+  //     }
+  //   }
+  // }
 
   handleDisableSubmitButton() {
     return this.handleFormService.acceptTerms ? false : true;
