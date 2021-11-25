@@ -7,7 +7,7 @@ import { HandleFormService } from '../../services/handle-form.service';
   styleUrls: ['./candidate-form.component.scss'],
 })
 export class CandidateFormComponent implements OnInit {
-  dupa = false
+
   constructor(
     public handleFormService: HandleFormService,
     private fb: FormBuilder
